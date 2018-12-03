@@ -1,0 +1,55 @@
+{
+    "apiVersion": "machinelearning.seldon.io/v1alpha2",
+    "kind": "SeldonDeployment",
+    "metadata": {
+        "labels": {
+            "app": "seldon"
+        },
+        "name": "seldon-deployment-example"
+    },
+    "spec": {
+        "annotations": {
+            "deployment_version": "v0",
+            "project_name": "Simple Model Prediction"
+        },
+        "name": "seldon-deployment",
+        "oauth_key": "oauth-key",
+        "oauth_secret": "oauth-secret",
+        "predictors": [
+            {
+                "annotations": {
+                    "predictor_version": "v1"
+                },
+                "componentSpecs": [
+                    {
+                        "spec": {
+                            "containers": [
+                                {
+                                    "image": "localhost:5000/gsunner/simple-model:${MODEL_VERSION}",
+                                    "imagePullPolicy": "IfNotPresent",
+                                    "name": "simple-model",
+                                    "resources": {
+                                        "requests": {
+                                            "memory": "1Mi"
+                                        }
+                                    }
+                                }
+                            ],
+                            "terminationGracePeriodSeconds": 20
+                        }
+                    }
+                ],
+                "graph": {
+                    "children": [],
+                    "endpoint": {
+                        "type": "REST"
+                    },
+                    "name": "simple-model",
+                    "type": "MODEL"
+                },
+                "name": "simple-model-predictor",
+                "replicas": 1
+            }
+        ]
+    }
+}
