@@ -1,0 +1,8 @@
+get_pods:
+	/bin/kubectl get pods -n default
+
+update_model_manifest:
+	@set -x && \
+		echo "updating model to version [${MODEL_VERSION}]" && \
+		cat demo-templates/model.json.template | envsubst | tee demo-manifests/model.json
+
