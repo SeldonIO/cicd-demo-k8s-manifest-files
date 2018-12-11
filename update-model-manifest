@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#
+# update-model-manifest
+#
+
+set -o nounset
+set -o errexit
+set -o pipefail
+set -o noclobber
+set -o noglob
+
+STARTUP_DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+MANIFEST_FPATH="${MANIFEST_FPATH}"
+MODEL_IMAGE_NAME="${IMAGE_NAME}"
+MODEL_VERSION="${MODEL_VERSION}"
+
+cat "${MANIFEST_FPATH}" | sed -e "s|${MODEL_IMAGE_NAME}:.*\",|${MODEL_IMAGE_NAME}:${MODEL_VERSION}\",|" | tee "${MANIFEST_FPATH}".tmp
+
+mv "${MANIFEST_FPATH}".tmp "${MANIFEST_FPATH}"
+
