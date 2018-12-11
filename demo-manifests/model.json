@@ -48,7 +48,7 @@
                     "type": "MODEL"
                 },
                 "name": "simple-model-predictor",
-                "replicas": 1
+                "replicas": 5
             }
         ]
     }
