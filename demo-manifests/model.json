@@ -25,7 +25,7 @@
                         "spec": {
                             "containers": [
                                 {
-                                    "image": "127.0.0.1:5000/gsunner/simple-model:v2",
+                                    "image": "127.0.0.1:5000/gsunner/simple-model:v3",
                                     "imagePullPolicy": "IfNotPresent",
                                     "name": "simple-model",
                                     "resources": {
