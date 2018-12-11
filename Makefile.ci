@@ -4,5 +4,8 @@ get_pods:
 update_model_manifest:
 	@set -x && \
 		echo "updating model to version [${MODEL_VERSION}]" && \
-		cat demo-templates/model.json.template | envsubst | tee demo-manifests/model.json
+		( \
+			MANIFEST_FPATH=demo-manifests/model.json \
+			IMAGE_NAME="127.0.0.1:5000/gsunner/simple-model" \
+			./update-model-manifest )
 
