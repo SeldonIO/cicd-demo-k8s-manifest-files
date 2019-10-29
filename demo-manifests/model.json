@@ -40,7 +40,6 @@
                     }
                 ],
                 "graph": {
-                    "children": [],
                     "endpoint": {
                         "type": "REST"
                     },
